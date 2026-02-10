@@ -36,19 +36,45 @@ def array_to_tree(arr):
 class Solution:
     def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
         result = []
-        def traverse(node):
+        def inorder(node):
             if node != None:
-                traverse(node.left)
+                inorder(node.left)
                 print(node.val, end=",")
                 result.append(node.val)
-                traverse(node.right)
+                inorder(node.right)
                 
-        traverse(root)
+        inorder(root)
+        return result
+    
+    def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        result = []
+        def preorder(node):
+            if node != None:
+                print(node.val, end=",")
+                result.append(node.val)
+                preorder(node.left)
+                preorder(node.right)
+
+        preorder(root)
+        return result
+    
+    def postorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        result = []
+        def postorder(node):
+            if node != None:
+                postorder(node.left)
+                postorder(node.right)
+                print(node.val, end=",")
+                result.append(node.val)
+
+        postorder(root)
         return result
 
 
-arr = [1,2,3,4,5,None,8,None,None,6,7,9]
+arr = [1,2,3,4,5]
 root = array_to_tree(arr)
 sol = Solution()
 print(sol.inorderTraversal(root))
+print(sol.preorderTraversal(root))
+print(sol.postorderTraversal(root))
 
