@@ -9,3 +9,5 @@ class Solution:
                 r_pathsum = PathSum(node.right, remainder)
                 return l_pathsum or r_pathsum or (remainder==0 and not node.left and not node.right)
         return PathSum(root, targetSum)
+    
+    
